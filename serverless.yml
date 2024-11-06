@@ -2,9 +2,12 @@ service: aws-api-gateway-crud-rest-api
 
 provider:
   name: aws
-  runtime: nodejs14.x
-  region: eu-west-1  # Set to your desired AWS region
+  runtime: nodejs18.x
+  region: eu-west-1  
   stage: ${opt:stage, 'dev'}  # Allows specifying the stage (e.g., dev, prod)
+  profile: serverless-deployer
+  deploymentBucket:
+    name: amge-deployment-bucket
 
 functions:
   create:
