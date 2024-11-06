@@ -1,0 +1,240 @@
+{
+  "/media/Feidhmchláir/Tionscadail/AMGE/aws-api-gateway-crud-rest-api": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.7",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "opt": {
+        "instance": {
+          "credentials": "<REDACTED>",
+          "serviceConfigFile": {
+            "service": "aws-api-gateway-crud-rest-api",
+            "provider": {
+              "name": "aws",
+              "runtime": "nodejs14.x",
+              "region": "eu-west-1",
+              "stage": "dev",
+              "versionFunctions": true
+            },
+            "functions": {
+              "create": {
+                "handler": "src/handlers/create.handler",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items",
+                      "method": "post"
+                    }
+                  }
+                ]
+              },
+              "read": {
+                "handler": "src/handlers/read.handler",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "get"
+                    }
+                  }
+                ]
+              },
+              "update": {
+                "handler": "src/handlers/update.handler",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "put"
+                    }
+                  }
+                ]
+              },
+              "delete": {
+                "handler": "src/handlers/delete.handler",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "delete"
+                    }
+                  }
+                ]
+              }
+            },
+            "resources": {
+              "Resources": {
+                "ItemsTable": {
+                  "Type": "AWS::DynamoDB::Table",
+                  "Properties": {
+                    "TableName": "ItemsTable",
+                    "AttributeDefinitions": [
+                      {
+                        "AttributeName": "id",
+                        "AttributeType": "S"
+                      }
+                    ],
+                    "KeySchema": [
+                      {
+                        "AttributeName": "id",
+                        "KeyType": "HASH"
+                      }
+                    ],
+                    "BillingMode": "PAY_PER_REQUEST"
+                  }
+                }
+              }
+            }
+          },
+          "configFileDirPath": "/media/Feidhmchláir/Tionscadail/AMGE/aws-api-gateway-crud-rest-api",
+          "config": {
+            "type": "opt"
+          },
+          "options": {
+            "provider": "aws",
+            "key": "F7vOcRP1uULNZcPdzOZTzTJNZdi+ildI0zeHQD11",
+            "secret": "<REDACTED>"
+          },
+          "logger": {
+            "namespace": "s:core:resolver:opt",
+            "prefix": null,
+            "prefixColor": null
+          },
+          "_credentialsPromise": "<REDACTED>"
+        },
+        "resolvers": {}
+      },
+      "default-aws-credential-resolver": "<REDACTED>"
+    },
+    "composeServiceName": null,
+    "servicePath": "/media/Feidhmchláir/Tionscadail/AMGE/aws-api-gateway-crud-rest-api",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "aws-api-gateway-crud-rest-api",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs14.x",
+        "region": "eu-west-1",
+        "stage": "dev",
+        "versionFunctions": true
+      },
+      "functions": {
+        "create": {
+          "handler": "src/handlers/create.handler",
+          "events": [
+            {
+              "http": {
+                "path": "items",
+                "method": "post"
+              }
+            }
+          ]
+        },
+        "read": {
+          "handler": "src/handlers/read.handler",
+          "events": [
+            {
+              "http": {
+                "path": "items/{id}",
+                "method": "get"
+              }
+            }
+          ]
+        },
+        "update": {
+          "handler": "src/handlers/update.handler",
+          "events": [
+            {
+              "http": {
+                "path": "items/{id}",
+                "method": "put"
+              }
+            }
+          ]
+        },
+        "delete": {
+          "handler": "src/handlers/delete.handler",
+          "events": [
+            {
+              "http": {
+                "path": "items/{id}",
+                "method": "delete"
+              }
+            }
+          ]
+        }
+      },
+      "resources": {
+        "Resources": {
+          "ItemsTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "TableName": "ItemsTable",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ],
+              "BillingMode": "PAY_PER_REQUEST"
+            }
+          }
+        }
+      }
+    },
+    "serviceRawFile": "service: aws-api-gateway-crud-rest-api\n\nprovider:\n  name: aws\n  runtime: nodejs14.x\n  region: eu-west-1  # Set to your desired AWS region\n  stage: ${opt:stage, 'dev'}  # Allows specifying the stage (e.g., dev, prod)\n\nfunctions:\n  create:\n    handler: src/handlers/create.handler\n    events:\n      - http:\n          path: items\n          method: post\n\n  read:\n    handler: src/handlers/read.handler\n    events:\n      - http:\n          path: items/{id}\n          method: get\n\n  update:\n    handler: src/handlers/update.handler\n    events:\n      - http:\n          path: items/{id}\n          method: put\n\n  delete:\n    handler: src/handlers/delete.handler\n    events:\n      - http:\n          path: items/{id}\n          method: delete\n\nresources:\n  Resources:\n    ItemsTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        TableName: ItemsTable\n        AttributeDefinitions:\n          - AttributeName: id\n            AttributeType: S\n        KeySchema:\n          - AttributeName: id\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n\n",
+    "command": [
+      "config",
+      "credentials"
+    ],
+    "options": {
+      "provider": "aws",
+      "key": "F7vOcRP1uULNZcPdzOZTzTJNZdi+ildI0zeHQD11",
+      "secret": "<REDACTED>"
+    },
+    "error": {
+      "message": "The \"config credentials\" command was deprecated in v4. To configure your AWS credentials, run the \"serverless\" command instead.",
+      "code": "UNRECOGNIZED_CLI_COMMAND"
+    },
+    "params": {},
+    "machineId": "5205ee5d9cfbf9a25d28566ff85f014f",
+    "stage": "dev",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "7e1b92de-7a92-4df6-bb12-3e5ca9e5edcf",
+    "orgName": "aindriu",
+    "userId": "NRsCKCkSlwvpCfJD9n",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": true,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "organs",
+    "subscription": null,
+    "userEmail": "aindriu80@yahoo.com",
+    "serviceProviderAwsRegion": "eu-west-1",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "869935109465",
+    "projectType": "traditional",
+    "versionSf": "4.4.7",
+    "serviceProviderAwsCfStackName": "aws-api-gateway-crud-rest-api-dev",
+    "serviceUniqueId": null,
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}

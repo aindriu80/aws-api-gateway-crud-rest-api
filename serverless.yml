@@ -1,0 +1,51 @@
+service: aws-api-gateway-crud-rest-api
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-west-1  # Set to your desired AWS region
+  stage: ${opt:stage, 'dev'}  # Allows specifying the stage (e.g., dev, prod)
+
+functions:
+  create:
+    handler: src/handlers/create.handler
+    events:
+      - http:
+          path: items
+          method: post
+
+  read:
+    handler: src/handlers/read.handler
+    events:
+      - http:
+          path: items/{id}
+          method: get
+
+  update:
+    handler: src/handlers/update.handler
+    events:
+      - http:
+          path: items/{id}
+          method: put
+
+  delete:
+    handler: src/handlers/delete.handler
+    events:
+      - http:
+          path: items/{id}
+          method: delete
+
+resources:
+  Resources:
+    ItemsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ItemsTable
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+
