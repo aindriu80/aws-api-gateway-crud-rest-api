@@ -1,3 +1,7 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: aindriu
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: aws-api-gateway-crud-rest-api
 service: aws-api-gateway-crud-rest-api
 
 provider:
@@ -8,6 +12,16 @@ provider:
   profile: serverless-deployer
   deploymentBucket:
     name: amge-deployment-bucket
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:PutItem"
+            - "dynamodb:GetItem"
+            - "dynamodb:UpdateItem"
+            - "dynamodb:DeleteItem"
+          Resource: "arn:aws:dynamodb:eu-west-1:869935109465:table/ItemsTable"
 
 functions:
   create:

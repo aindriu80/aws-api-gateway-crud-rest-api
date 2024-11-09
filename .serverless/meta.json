@@ -6,11 +6,12 @@
     "isCompose": false,
     "composeOrgName": null,
     "composeResolverProviders": {
-      "default-aws-credential-resolver": "<REDACTED>",
       "opt": {
         "instance": {
           "credentials": "<REDACTED>",
           "serviceConfigFile": {
+            "org": "aindriu",
+            "app": "aws-api-gateway-crud-rest-api",
             "service": "aws-api-gateway-crud-rest-api",
             "provider": {
               "name": "aws",
@@ -19,6 +20,22 @@
               "stage": "dev",
               "profile": "serverless-deployer",
               "deploymentBucket": "amge-deployment-bucket",
+              "iam": {
+                "role": {
+                  "statements": [
+                    {
+                      "Effect": "Allow",
+                      "Action": [
+                        "dynamodb:PutItem",
+                        "dynamodb:GetItem",
+                        "dynamodb:UpdateItem",
+                        "dynamodb:DeleteItem"
+                      ],
+                      "Resource": "arn:aws:dynamodb:eu-west-1:869935109465:table/ItemsTable"
+                    }
+                  ]
+                }
+              },
               "versionFunctions": true,
               "deploymentBucketObject": {
                 "name": "amge-deployment-bucket"
@@ -108,6 +125,16 @@
                                     "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/aws-api-gateway-crud-rest-api-dev*:*:*"
                                   }
                                 ]
+                              },
+                              {
+                                "Effect": "Allow",
+                                "Action": [
+                                  "dynamodb:PutItem",
+                                  "dynamodb:GetItem",
+                                  "dynamodb:UpdateItem",
+                                  "dynamodb:DeleteItem"
+                                ],
+                                "Resource": "arn:aws:dynamodb:eu-west-1:869935109465:table/ItemsTable"
                               }
                             ]
                           }
@@ -134,7 +161,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "amge-deployment-bucket",
-                        "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1730911760869-2024-11-06T16:49:20.869Z/aws-api-gateway-crud-rest-api.zip"
+                        "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731188382472-2024-11-09T21:39:42.472Z/aws-api-gateway-crud-rest-api.zip"
                       },
                       "Handler": "src/handlers/create.handler",
                       "Runtime": "nodejs18.x",
@@ -157,7 +184,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "amge-deployment-bucket",
-                        "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1730911760869-2024-11-06T16:49:20.869Z/aws-api-gateway-crud-rest-api.zip"
+                        "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731188382472-2024-11-09T21:39:42.472Z/aws-api-gateway-crud-rest-api.zip"
                       },
                       "Handler": "src/handlers/read.handler",
                       "Runtime": "nodejs18.x",
@@ -180,7 +207,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "amge-deployment-bucket",
-                        "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1730911760869-2024-11-06T16:49:20.869Z/aws-api-gateway-crud-rest-api.zip"
+                        "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731188382472-2024-11-09T21:39:42.472Z/aws-api-gateway-crud-rest-api.zip"
                       },
                       "Handler": "src/handlers/update.handler",
                       "Runtime": "nodejs18.x",
@@ -203,7 +230,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "amge-deployment-bucket",
-                        "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1730911760869-2024-11-06T16:49:20.869Z/aws-api-gateway-crud-rest-api.zip"
+                        "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731188382472-2024-11-09T21:39:42.472Z/aws-api-gateway-crud-rest-api.zip"
                       },
                       "Handler": "src/handlers/delete.handler",
                       "Runtime": "nodejs18.x",
@@ -221,44 +248,44 @@
                       "DeleteLogGroup"
                     ]
                   },
-                  "CreateLambdaVersionXN8AwirkKnVBkS71IyFRs3CiJIzF5v1qIAwTeuN0": {
+                  "CreateLambdaVersioneuTFFibxbzRd3M4veJiVJ4bx1AtBpQbtrVGHYMVHLY": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "CreateLambdaFunction"
                       },
-                      "CodeSha256": "NVKeTv/QId7FDVm0z/NSETKFJ4J2OACwcYnleUB6pok="
+                      "CodeSha256": "iYIGQ+MUxoVRxEBzfUNeZq08CaITcRxZoUts1bvLnEk="
                     }
                   },
-                  "ReadLambdaVersiong47BF3MWLyE0y4rxNLzjilMqTO70kcABbl2lU5wzXk": {
+                  "ReadLambdaVersionRaTi3DdXtTJEGPISUTnvgoSjMtV9oR8QQ0YpQ0I4xc": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "ReadLambdaFunction"
                       },
-                      "CodeSha256": "NVKeTv/QId7FDVm0z/NSETKFJ4J2OACwcYnleUB6pok="
+                      "CodeSha256": "iYIGQ+MUxoVRxEBzfUNeZq08CaITcRxZoUts1bvLnEk="
                     }
                   },
-                  "UpdateLambdaVersiondl1C0x3k6UkxNZMfzGVC004fEYU83urUf1kwJ7MbDA": {
+                  "UpdateLambdaVersion2kTdPKnYoFzXfMlFDurkUSm42CtcspUVqd7eWFJbac": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "UpdateLambdaFunction"
                       },
-                      "CodeSha256": "NVKeTv/QId7FDVm0z/NSETKFJ4J2OACwcYnleUB6pok="
+                      "CodeSha256": "iYIGQ+MUxoVRxEBzfUNeZq08CaITcRxZoUts1bvLnEk="
                     }
                   },
-                  "DeleteLambdaVersion0YCPuuxkvBpWsSZqTFyQXteVhYSRXXyG6pM2bCOMt8w": {
+                  "DeleteLambdaVersionXiELDGyXXxwRmMgCFLtuOhHaRgQFFXWnJYKW7xNX4": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "DeleteLambdaFunction"
                       },
-                      "CodeSha256": "NVKeTv/QId7FDVm0z/NSETKFJ4J2OACwcYnleUB6pok="
+                      "CodeSha256": "iYIGQ+MUxoVRxEBzfUNeZq08CaITcRxZoUts1bvLnEk="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -484,7 +511,7 @@
                       "DeleteLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1730911760169": {
+                  "ApiGatewayDeployment1731188379097": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -677,7 +704,7 @@
                   "CreateLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "CreateLambdaVersionXN8AwirkKnVBkS71IyFRs3CiJIzF5v1qIAwTeuN0"
+                      "Ref": "CreateLambdaVersioneuTFFibxbzRd3M4veJiVJ4bx1AtBpQbtrVGHYMVHLY"
                     },
                     "Export": {
                       "Name": "sls-aws-api-gateway-crud-rest-api-dev-CreateLambdaFunctionQualifiedArn"
@@ -686,7 +713,7 @@
                   "ReadLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "ReadLambdaVersiong47BF3MWLyE0y4rxNLzjilMqTO70kcABbl2lU5wzXk"
+                      "Ref": "ReadLambdaVersionRaTi3DdXtTJEGPISUTnvgoSjMtV9oR8QQ0YpQ0I4xc"
                     },
                     "Export": {
                       "Name": "sls-aws-api-gateway-crud-rest-api-dev-ReadLambdaFunctionQualifiedArn"
@@ -695,7 +722,7 @@
                   "UpdateLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "UpdateLambdaVersiondl1C0x3k6UkxNZMfzGVC004fEYU83urUf1kwJ7MbDA"
+                      "Ref": "UpdateLambdaVersion2kTdPKnYoFzXfMlFDurkUSm42CtcspUVqd7eWFJbac"
                     },
                     "Export": {
                       "Name": "sls-aws-api-gateway-crud-rest-api-dev-UpdateLambdaFunctionQualifiedArn"
@@ -704,7 +731,7 @@
                   "DeleteLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "DeleteLambdaVersion0YCPuuxkvBpWsSZqTFyQXteVhYSRXXyG6pM2bCOMt8w"
+                      "Ref": "DeleteLambdaVersionXiELDGyXXxwRmMgCFLtuOhHaRgQFFXWnJYKW7xNX4"
                     },
                     "Export": {
                       "Name": "sls-aws-api-gateway-crud-rest-api-dev-DeleteLambdaFunctionQualifiedArn"
@@ -758,7 +785,7 @@
                 "timeout": 6,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "CreateLambdaVersionXN8AwirkKnVBkS71IyFRs3CiJIzF5v1qIAwTeuN0"
+                "versionLogicalId": "CreateLambdaVersioneuTFFibxbzRd3M4veJiVJ4bx1AtBpQbtrVGHYMVHLY"
               },
               "read": {
                 "handler": "src/handlers/read.handler",
@@ -777,7 +804,7 @@
                 "timeout": 6,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "ReadLambdaVersiong47BF3MWLyE0y4rxNLzjilMqTO70kcABbl2lU5wzXk"
+                "versionLogicalId": "ReadLambdaVersionRaTi3DdXtTJEGPISUTnvgoSjMtV9oR8QQ0YpQ0I4xc"
               },
               "update": {
                 "handler": "src/handlers/update.handler",
@@ -796,7 +823,7 @@
                 "timeout": 6,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "UpdateLambdaVersiondl1C0x3k6UkxNZMfzGVC004fEYU83urUf1kwJ7MbDA"
+                "versionLogicalId": "UpdateLambdaVersion2kTdPKnYoFzXfMlFDurkUSm42CtcspUVqd7eWFJbac"
               },
               "delete": {
                 "handler": "src/handlers/delete.handler",
@@ -815,7 +842,7 @@
                 "timeout": 6,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "DeleteLambdaVersion0YCPuuxkvBpWsSZqTFyQXteVhYSRXXyG6pM2bCOMt8w"
+                "versionLogicalId": "DeleteLambdaVersionXiELDGyXXxwRmMgCFLtuOhHaRgQFFXWnJYKW7xNX4"
               }
             },
             "resources": {
@@ -847,11 +874,7 @@
           "config": {
             "type": "opt"
           },
-          "options": {
-            "stage": "dev"
-          },
-          "stage": "dev",
-          "dashboard": null,
+          "options": {},
           "logger": {
             "namespace": "s:core:resolver:opt",
             "prefix": null,
@@ -860,12 +883,15 @@
           "_credentialsPromise": "<REDACTED>"
         },
         "resolvers": {}
-      }
+      },
+      "default-aws-credential-resolver": "<REDACTED>"
     },
     "composeServiceName": null,
     "servicePath": "/media/Feidhmchláir/Tionscadail/AMGE/aws-api-gateway-crud-rest-api",
     "serviceConfigFileName": "serverless.yml",
     "service": {
+      "org": "aindriu",
+      "app": "aws-api-gateway-crud-rest-api",
       "service": "aws-api-gateway-crud-rest-api",
       "provider": {
         "name": "aws",
@@ -874,6 +900,22 @@
         "stage": "dev",
         "profile": "serverless-deployer",
         "deploymentBucket": "amge-deployment-bucket",
+        "iam": {
+          "role": {
+            "statements": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "dynamodb:PutItem",
+                  "dynamodb:GetItem",
+                  "dynamodb:UpdateItem",
+                  "dynamodb:DeleteItem"
+                ],
+                "Resource": "arn:aws:dynamodb:eu-west-1:869935109465:table/ItemsTable"
+              }
+            ]
+          }
+        },
         "versionFunctions": true,
         "deploymentBucketObject": {
           "name": "amge-deployment-bucket"
@@ -963,6 +1005,16 @@
                               "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/aws-api-gateway-crud-rest-api-dev*:*:*"
                             }
                           ]
+                        },
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "dynamodb:PutItem",
+                            "dynamodb:GetItem",
+                            "dynamodb:UpdateItem",
+                            "dynamodb:DeleteItem"
+                          ],
+                          "Resource": "arn:aws:dynamodb:eu-west-1:869935109465:table/ItemsTable"
                         }
                       ]
                     }
@@ -989,7 +1041,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "amge-deployment-bucket",
-                  "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1730911760869-2024-11-06T16:49:20.869Z/aws-api-gateway-crud-rest-api.zip"
+                  "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731188382472-2024-11-09T21:39:42.472Z/aws-api-gateway-crud-rest-api.zip"
                 },
                 "Handler": "src/handlers/create.handler",
                 "Runtime": "nodejs18.x",
@@ -1012,7 +1064,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "amge-deployment-bucket",
-                  "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1730911760869-2024-11-06T16:49:20.869Z/aws-api-gateway-crud-rest-api.zip"
+                  "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731188382472-2024-11-09T21:39:42.472Z/aws-api-gateway-crud-rest-api.zip"
                 },
                 "Handler": "src/handlers/read.handler",
                 "Runtime": "nodejs18.x",
@@ -1035,7 +1087,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "amge-deployment-bucket",
-                  "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1730911760869-2024-11-06T16:49:20.869Z/aws-api-gateway-crud-rest-api.zip"
+                  "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731188382472-2024-11-09T21:39:42.472Z/aws-api-gateway-crud-rest-api.zip"
                 },
                 "Handler": "src/handlers/update.handler",
                 "Runtime": "nodejs18.x",
@@ -1058,7 +1110,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "amge-deployment-bucket",
-                  "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1730911760869-2024-11-06T16:49:20.869Z/aws-api-gateway-crud-rest-api.zip"
+                  "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731188382472-2024-11-09T21:39:42.472Z/aws-api-gateway-crud-rest-api.zip"
                 },
                 "Handler": "src/handlers/delete.handler",
                 "Runtime": "nodejs18.x",
@@ -1076,44 +1128,44 @@
                 "DeleteLogGroup"
               ]
             },
-            "CreateLambdaVersionXN8AwirkKnVBkS71IyFRs3CiJIzF5v1qIAwTeuN0": {
+            "CreateLambdaVersioneuTFFibxbzRd3M4veJiVJ4bx1AtBpQbtrVGHYMVHLY": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "CreateLambdaFunction"
                 },
-                "CodeSha256": "NVKeTv/QId7FDVm0z/NSETKFJ4J2OACwcYnleUB6pok="
+                "CodeSha256": "iYIGQ+MUxoVRxEBzfUNeZq08CaITcRxZoUts1bvLnEk="
               }
             },
-            "ReadLambdaVersiong47BF3MWLyE0y4rxNLzjilMqTO70kcABbl2lU5wzXk": {
+            "ReadLambdaVersionRaTi3DdXtTJEGPISUTnvgoSjMtV9oR8QQ0YpQ0I4xc": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ReadLambdaFunction"
                 },
-                "CodeSha256": "NVKeTv/QId7FDVm0z/NSETKFJ4J2OACwcYnleUB6pok="
+                "CodeSha256": "iYIGQ+MUxoVRxEBzfUNeZq08CaITcRxZoUts1bvLnEk="
               }
             },
-            "UpdateLambdaVersiondl1C0x3k6UkxNZMfzGVC004fEYU83urUf1kwJ7MbDA": {
+            "UpdateLambdaVersion2kTdPKnYoFzXfMlFDurkUSm42CtcspUVqd7eWFJbac": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "UpdateLambdaFunction"
                 },
-                "CodeSha256": "NVKeTv/QId7FDVm0z/NSETKFJ4J2OACwcYnleUB6pok="
+                "CodeSha256": "iYIGQ+MUxoVRxEBzfUNeZq08CaITcRxZoUts1bvLnEk="
               }
             },
-            "DeleteLambdaVersion0YCPuuxkvBpWsSZqTFyQXteVhYSRXXyG6pM2bCOMt8w": {
+            "DeleteLambdaVersionXiELDGyXXxwRmMgCFLtuOhHaRgQFFXWnJYKW7xNX4": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "DeleteLambdaFunction"
                 },
-                "CodeSha256": "NVKeTv/QId7FDVm0z/NSETKFJ4J2OACwcYnleUB6pok="
+                "CodeSha256": "iYIGQ+MUxoVRxEBzfUNeZq08CaITcRxZoUts1bvLnEk="
               }
             },
             "ApiGatewayRestApi": {
@@ -1339,7 +1391,7 @@
                 "DeleteLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1730911760169": {
+            "ApiGatewayDeployment1731188379097": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -1532,7 +1584,7 @@
             "CreateLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "CreateLambdaVersionXN8AwirkKnVBkS71IyFRs3CiJIzF5v1qIAwTeuN0"
+                "Ref": "CreateLambdaVersioneuTFFibxbzRd3M4veJiVJ4bx1AtBpQbtrVGHYMVHLY"
               },
               "Export": {
                 "Name": "sls-aws-api-gateway-crud-rest-api-dev-CreateLambdaFunctionQualifiedArn"
@@ -1541,7 +1593,7 @@
             "ReadLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ReadLambdaVersiong47BF3MWLyE0y4rxNLzjilMqTO70kcABbl2lU5wzXk"
+                "Ref": "ReadLambdaVersionRaTi3DdXtTJEGPISUTnvgoSjMtV9oR8QQ0YpQ0I4xc"
               },
               "Export": {
                 "Name": "sls-aws-api-gateway-crud-rest-api-dev-ReadLambdaFunctionQualifiedArn"
@@ -1550,7 +1602,7 @@
             "UpdateLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "UpdateLambdaVersiondl1C0x3k6UkxNZMfzGVC004fEYU83urUf1kwJ7MbDA"
+                "Ref": "UpdateLambdaVersion2kTdPKnYoFzXfMlFDurkUSm42CtcspUVqd7eWFJbac"
               },
               "Export": {
                 "Name": "sls-aws-api-gateway-crud-rest-api-dev-UpdateLambdaFunctionQualifiedArn"
@@ -1559,7 +1611,7 @@
             "DeleteLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "DeleteLambdaVersion0YCPuuxkvBpWsSZqTFyQXteVhYSRXXyG6pM2bCOMt8w"
+                "Ref": "DeleteLambdaVersionXiELDGyXXxwRmMgCFLtuOhHaRgQFFXWnJYKW7xNX4"
               },
               "Export": {
                 "Name": "sls-aws-api-gateway-crud-rest-api-dev-DeleteLambdaFunctionQualifiedArn"
@@ -1613,7 +1665,7 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "CreateLambdaVersionXN8AwirkKnVBkS71IyFRs3CiJIzF5v1qIAwTeuN0"
+          "versionLogicalId": "CreateLambdaVersioneuTFFibxbzRd3M4veJiVJ4bx1AtBpQbtrVGHYMVHLY"
         },
         "read": {
           "handler": "src/handlers/read.handler",
@@ -1632,7 +1684,7 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "ReadLambdaVersiong47BF3MWLyE0y4rxNLzjilMqTO70kcABbl2lU5wzXk"
+          "versionLogicalId": "ReadLambdaVersionRaTi3DdXtTJEGPISUTnvgoSjMtV9oR8QQ0YpQ0I4xc"
         },
         "update": {
           "handler": "src/handlers/update.handler",
@@ -1651,7 +1703,7 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "UpdateLambdaVersiondl1C0x3k6UkxNZMfzGVC004fEYU83urUf1kwJ7MbDA"
+          "versionLogicalId": "UpdateLambdaVersion2kTdPKnYoFzXfMlFDurkUSm42CtcspUVqd7eWFJbac"
         },
         "delete": {
           "handler": "src/handlers/delete.handler",
@@ -1670,7 +1722,7 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "DeleteLambdaVersion0YCPuuxkvBpWsSZqTFyQXteVhYSRXXyG6pM2bCOMt8w"
+          "versionLogicalId": "DeleteLambdaVersionXiELDGyXXxwRmMgCFLtuOhHaRgQFFXWnJYKW7xNX4"
         }
       },
       "resources": {
@@ -1698,13 +1750,11 @@
         "Outputs": {}
       }
     },
-    "serviceRawFile": "service: aws-api-gateway-crud-rest-api\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1  \n  stage: ${opt:stage, 'dev'}  # Allows specifying the stage (e.g., dev, prod)\n  profile: serverless-deployer\n  deploymentBucket:\n    name: amge-deployment-bucket\n\nfunctions:\n  create:\n    handler: src/handlers/create.handler\n    events:\n      - http:\n          path: items\n          method: post\n\n  read:\n    handler: src/handlers/read.handler\n    events:\n      - http:\n          path: items/{id}\n          method: get\n\n  update:\n    handler: src/handlers/update.handler\n    events:\n      - http:\n          path: items/{id}\n          method: put\n\n  delete:\n    handler: src/handlers/delete.handler\n    events:\n      - http:\n          path: items/{id}\n          method: delete\n\nresources:\n  Resources:\n    ItemsTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        TableName: ItemsTable\n        AttributeDefinitions:\n          - AttributeName: id\n            AttributeType: S\n        KeySchema:\n          - AttributeName: id\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n\n",
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: aindriu\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: aws-api-gateway-crud-rest-api\nservice: aws-api-gateway-crud-rest-api\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1  \n  stage: ${opt:stage, 'dev'}  # Allows specifying the stage (e.g., dev, prod)\n  profile: serverless-deployer\n  deploymentBucket:\n    name: amge-deployment-bucket\n  iam:\n    role:\n      statements:\n        - Effect: \"Allow\"\n          Action:\n            - \"dynamodb:PutItem\"\n            - \"dynamodb:GetItem\"\n            - \"dynamodb:UpdateItem\"\n            - \"dynamodb:DeleteItem\"\n          Resource: \"arn:aws:dynamodb:eu-west-1:869935109465:table/ItemsTable\"\n\nfunctions:\n  create:\n    handler: src/handlers/create.handler\n    events:\n      - http:\n          path: items\n          method: post\n\n  read:\n    handler: src/handlers/read.handler\n    events:\n      - http:\n          path: items/{id}\n          method: get\n\n  update:\n    handler: src/handlers/update.handler\n    events:\n      - http:\n          path: items/{id}\n          method: put\n\n  delete:\n    handler: src/handlers/delete.handler\n    events:\n      - http:\n          path: items/{id}\n          method: delete\n\nresources:\n  Resources:\n    ItemsTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        TableName: ItemsTable\n        AttributeDefinitions:\n          - AttributeName: id\n            AttributeType: S\n        KeySchema:\n          - AttributeName: id\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n\n",
     "command": [
       "deploy"
     ],
-    "options": {
-      "stage": "dev"
-    },
+    "options": {},
     "error": null,
     "params": {},
     "machineId": "5205ee5d9cfbf9a25d28566ff85f014f",
@@ -1715,11 +1765,14 @@
     "orgName": "aindriu",
     "userId": "NRsCKCkSlwvpCfJD9n",
     "dashboard": {
-      "isEnabledForService": false,
+      "isEnabledForService": true,
       "requiredAuthentication": false,
-      "orgFeaturesInUse": null,
+      "orgFeaturesInUse": {
+        "providers": false,
+        "monitoring": false
+      },
       "orgObservabilityIntegrations": null,
-      "serviceAppId": null,
+      "serviceAppId": "ZnmZlcDfnYsQ3Ftt78",
       "serviceProvider": null,
       "instanceParameters": null
     },
@@ -1736,24 +1789,24 @@
     "serviceUniqueId": "arn:aws:cloudformation:eu-west-1:869935109465:stack/aws-api-gateway-crud-rest-api-dev/13917260-9c5f-11ef-8cb3-068b26aa6077",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-west-1:869935109465:stack/aws-api-gateway-crud-rest-api-dev/13917260-9c5f-11ef-8cb3-068b26aa6077",
     "serviceProviderAwsCfStackCreated": "2024-11-06T16:49:23.920Z",
-    "serviceProviderAwsCfStackUpdated": null,
-    "serviceProviderAwsCfStackStatus": "CREATE_COMPLETE",
+    "serviceProviderAwsCfStackUpdated": "2024-11-09T21:40:05.602Z",
+    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "DeleteLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:869935109465:function:aws-api-gateway-crud-rest-api-dev-delete:1",
+        "OutputValue": "arn:aws:lambda:eu-west-1:869935109465:function:aws-api-gateway-crud-rest-api-dev-delete:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-aws-api-gateway-crud-rest-api-dev-DeleteLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "CreateLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:869935109465:function:aws-api-gateway-crud-rest-api-dev-create:1",
+        "OutputValue": "arn:aws:lambda:eu-west-1:869935109465:function:aws-api-gateway-crud-rest-api-dev-create:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-aws-api-gateway-crud-rest-api-dev-CreateLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "UpdateLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:869935109465:function:aws-api-gateway-crud-rest-api-dev-update:1",
+        "OutputValue": "arn:aws:lambda:eu-west-1:869935109465:function:aws-api-gateway-crud-rest-api-dev-update:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-aws-api-gateway-crud-rest-api-dev-UpdateLambdaFunctionQualifiedArn"
       },
@@ -1770,7 +1823,7 @@
       },
       {
         "OutputKey": "ReadLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:869935109465:function:aws-api-gateway-crud-rest-api-dev-read:1",
+        "OutputValue": "arn:aws:lambda:eu-west-1:869935109465:function:aws-api-gateway-crud-rest-api-dev-read:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-aws-api-gateway-crud-rest-api-dev-ReadLambdaFunctionQualifiedArn"
       }

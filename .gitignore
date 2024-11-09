@@ -1,1 +1,5 @@
 aws.txt
+node_modules
+.serverless/aws-api-gateway-crud-rest-api.zip
+pnpm-lock.yaml
+

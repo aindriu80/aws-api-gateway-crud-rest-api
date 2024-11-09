@@ -1,34 +1,62 @@
-# **AWS API Gateway CRUD REST API** 
+# AWS API Gateway CRUD REST API
 
-**Completed Tasks**
-=====================
+This project provides a REST API for CRUD operations with AWS Lambda and DynamoDB. The API allows creating, reading, updating, and deleting items from a DynamoDB table. Below are the key details about the project and its current status.
 
-*   Set up Serverless Framework: Successfully configured the Serverless Framework to deploy application.
-*   Deployed API Gateway CRUD Endpoints
-    *   **POST**: Creates a new item.
-    *   **GET**: Retrieves an item by its id.
-    *   **PUT**: Updates an item by its id.
-    *   **DELETE**: Deletes an item by its id.
-*   Lambda Functions Deployed: The Lambda functions corresponding to each API method (Create, Read, Update, Delete) have been successfully deployed.
-*   IAM Role Permissions: Handled various IAM permission errors, ensuring that the serverless-deployer role has the necessary access to create and manage resources.
-*   Resolved Deployment Bucket Issues: Created a custom deployment S3 bucket and resolved access issues related to it.
-*   Resolved Runtime and Permissions Issues: Adjusted permissions and ensured the runtime for Lambda functions was updated to a supported version (Node.js 18.x instead of 14.x).
+## Completed Tasks
 
-**Pending/Incomplete Tasks**
-==========================
+- **API Endpoints Deployment**: Successfully deployed the following API endpoints via AWS API Gateway:
+  - POST: `/dev/items` – Create a new item
+  - GET: `/dev/items/{id}` – Retrieve an item by its `id`
+  - PUT: `/dev/items/{id}` – Update an existing item
+  - DELETE: `/dev/items/{id}` – Delete an item by its `id`
 
-*   **Testing API**: While the endpoints are deployed, testing them with actual data (using tools like Postman, curl, or unit tests) has not yet been completed.
-*   **Error Handling/Validation**: Ensure Lambda functions handle errors gracefully (e.g., invalid data, missing parameters) and return meaningful responses.
-*   **Security**
-    *   **API Authorization**: Considering adding authentication/authorization, such as AWS IAM roles, API keys, or JWT tokens, to secure endpoints.
-    *   **Permissions for Other Users**: If other users or services to access the API, additional IAM permissions may need to be set up.
-*   **Logging/Monitoring**: Set up CloudWatch logs and monitoring for Lambda functions to track errors and performance.
-*   **Environment-Specific Configurations**: If planning to deploy to different environments (e.g., dev, prod), may need to manage different configurations (like database URLs or API keys) for each environment.
+- **AWS SDK and Dependencies**: The following npm packages were added to support the functionality:
+  - `"aws-sdk": "^2.1692.0"`
+  - `"jmespath": "^0.16.0"`
+  - `"sax": "^1.4.1"`
+  - `"uuid": "^11.0.2"`
+  - `"xml2js": "^0.6.2"`
+  - `"xmlbuilder": "^15.1.1"`
 
-**Potential Improvements**
-=========================
+- **Authorization Issues**: The API was successfully integrated with DynamoDB, and access to resources was properly configured using IAM roles and policies to resolve authorization errors.
 
-*   **Input Validation**: Ensure that each Lambda function validates the inputs for each endpoint (e.g., ensuring valid id values and request bodies).
-*   **Versioning**: If planning to evolve the API, consider versioning your endpoints so that future updates don't break existing clients.
-*   **Database Integration**: Potentially integrate the Lambda functions with a database (such as DynamoDB) for storing items.
-*   **Unit Testing**: Write unit tests for Lambda functions to ensure they handle edge cases and errors correctly.
+- **API Testing**: Partial testing of the API has been completed using Postman. The POST, GET, and PUT endpoints were tested, and responses were verified successfully.
+
+## Pending/In Progress Tasks
+
+- **Testing DELETE Method**: While the DELETE method is implemented, additional testing may be needed to verify its behavior with different input cases and ensure proper deletion from the database.
+
+- **Unit Testing**: Unit tests need to be written for the Lambda functions to ensure their correct behavior during edge cases and error handling.
+
+- **Deployment Pipeline**: Set up a CI/CD pipeline for automated deployment using tools like AWS CodePipeline or GitHub Actions.
+
+## How to Use
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/aindriu80/aws-api-gateway-crud-rest-api
+    cd aws-api-gateway-crud-rest-api
+    ```
+
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3. **Deploy the service**:
+    ```bash
+    serverless deploy
+    ```
+
+4. **Test the API**:
+   Use Postman or curl to test the deployed API endpoints:
+   - **POST**: `/dev/items` – Create an item
+   - **GET**: `/dev/items/{id}` – Get an item by ID
+   - **PUT**: `/dev/items/{id}` – Update an item by ID
+   - **DELETE**: `/dev/items/{id}` – Delete an item by ID
+
+## Notes
+
+- Make sure the IAM roles and policies are correctly set up for AWS Lambda to access DynamoDB.
+- For further customization, you can modify the Lambda functions or the API Gateway settings via the `serverless.yml` file.
+
