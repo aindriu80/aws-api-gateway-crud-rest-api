@@ -12,6 +12,8 @@ provider:
   profile: serverless-deployer
   deploymentBucket:
     name: amge-deployment-bucket
+  environment:
+    ITEMS_TABLE: !Ref ItemsTable
   iam:
     role:
       statements:
