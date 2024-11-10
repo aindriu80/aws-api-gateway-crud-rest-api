@@ -22,11 +22,14 @@ This project provides a REST API for CRUD operations with AWS Lambda and DynamoD
 
 - **API Testing**: Partial testing of the API has been completed using Postman. The POST, GET, and PUT endpoints were tested, and responses were verified successfully.
 
+- **Testing DELETE Method**: The DELETE method has been implemented and thoroughly tested. It correctly handles deletion and provides appropriate responses for both successful deletions and attempts to delete non-existent items (returning "Item not found").
+
+- **Unit Testing**: Tests Completed: POST (Create), GET (Read), and DELETE (Delete) Lambda functions have corresponding tests that are successfully passing.
+
+
 ## Pending/In Progress Tasks
 
-- **Testing DELETE Method**: While the DELETE method is implemented, additional testing may be needed to verify its behavior with different input cases and ensure proper deletion from the database.
-
-- **Unit Testing**: Unit tests need to be written for the Lambda functions to ensure their correct behavior during edge cases and error handling.
+- **Unit Testing**: The GET test is facing issues with retrieving the correct item based on the dynamically generated id. Currently investigating how to fix this.
 
 - **Deployment Pipeline**: Set up a CI/CD pipeline for automated deployment using tools like AWS CodePipeline or GitHub Actions.
 
@@ -48,12 +51,19 @@ This project provides a REST API for CRUD operations with AWS Lambda and DynamoD
     serverless deploy
     ```
 
-4. **Test the API**:
+4. **Run Unit Tests**:
    Use Postman or curl to test the deployed API endpoints:
    - **POST**: `/dev/items` – Create an item
    - **GET**: `/dev/items/{id}` – Get an item by ID
    - **PUT**: `/dev/items/{id}` – Update an item by ID
    - **DELETE**: `/dev/items/{id}` – Delete an item by ID
+   
+5. **Test the API**:
+    To run the unit tests using Jest, execute:
+    ```bash
+     npm test or jest
+    ```
+    This will run the tests for the Lambda functions to ensure everything is working as expected.
 
 ## Notes
 

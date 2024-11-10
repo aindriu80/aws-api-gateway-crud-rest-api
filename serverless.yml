@@ -1,6 +1,4 @@
-# "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: aindriu
-# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
 app: aws-api-gateway-crud-rest-api
 service: aws-api-gateway-crud-rest-api
 
@@ -8,12 +6,12 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: eu-west-1  
-  stage: ${opt:stage, 'dev'}  # Allows specifying the stage (e.g., dev, prod)
+  stage: ${opt:stage, 'dev'}
   profile: serverless-deployer
   deploymentBucket:
     name: amge-deployment-bucket
   environment:
-    ITEMS_TABLE: !Ref ItemsTable
+    ITEMS_TABLE: !Ref ItemsTable  # Correct way to reference the table name
   iam:
     role:
       statements:
@@ -23,11 +21,13 @@ provider:
             - "dynamodb:GetItem"
             - "dynamodb:UpdateItem"
             - "dynamodb:DeleteItem"
-          Resource: "arn:aws:dynamodb:eu-west-1:869935109465:table/ItemsTable"
+          Resource: !GetAtt ItemsTable.Arn  # Correct way to reference the table ARN
 
 functions:
   create:
     handler: src/handlers/create.handler
+    environment:
+      ITEMS_TABLE: !Ref ItemsTable  # Correct way to reference the table name
     events:
       - http:
           path: items
@@ -35,6 +35,8 @@ functions:
 
   read:
     handler: src/handlers/read.handler
+    environment:
+      ITEMS_TABLE: !Ref ItemsTable  # Correct way to reference the table name
     events:
       - http:
           path: items/{id}
@@ -42,6 +44,8 @@ functions:
 
   update:
     handler: src/handlers/update.handler
+    environment:
+      ITEMS_TABLE: !Ref ItemsTable  # Correct way to reference the table name
     events:
       - http:
           path: items/{id}
@@ -49,6 +53,8 @@ functions:
 
   delete:
     handler: src/handlers/delete.handler
+    environment:
+      ITEMS_TABLE: !Ref ItemsTable  # Correct way to reference the table name
     events:
       - http:
           path: items/{id}
@@ -59,7 +65,7 @@ resources:
     ItemsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ItemsTable
+        TableName: ItemsTable  # You can set a fixed table name, or remove this if CloudFormation manages it automatically
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
@@ -67,4 +73,18 @@ resources:
           - AttributeName: id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
+
+package:
+  exclude:
+    - tests/**           
+    - .git/**           
+
+custom:
+  esbuild:
+    bundle: true           
+    minify: true          
+    exclude: ['aws-sdk'] 
+    target: "node18"    
+    define:
+      "require.resolve": undefined
 
