@@ -155,7 +155,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "amge-deployment-bucket",
-                "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731270346601-2024-11-10T20:25:46.601Z/aws-api-gateway-crud-rest-api.zip"
+                "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731423410054-2024-11-12T14:56:50.054Z/aws-api-gateway-crud-rest-api.zip"
               },
               "Handler": "src/handlers/create.handler",
               "Runtime": "nodejs18.x",
@@ -185,7 +185,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "amge-deployment-bucket",
-                "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731270346601-2024-11-10T20:25:46.601Z/aws-api-gateway-crud-rest-api.zip"
+                "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731423410054-2024-11-12T14:56:50.054Z/aws-api-gateway-crud-rest-api.zip"
               },
               "Handler": "src/handlers/read.handler",
               "Runtime": "nodejs18.x",
@@ -215,7 +215,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "amge-deployment-bucket",
-                "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731270346601-2024-11-10T20:25:46.601Z/aws-api-gateway-crud-rest-api.zip"
+                "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731423410054-2024-11-12T14:56:50.054Z/aws-api-gateway-crud-rest-api.zip"
               },
               "Handler": "src/handlers/update.handler",
               "Runtime": "nodejs18.x",
@@ -245,7 +245,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "amge-deployment-bucket",
-                "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731270346601-2024-11-10T20:25:46.601Z/aws-api-gateway-crud-rest-api.zip"
+                "S3Key": "serverless/aws-api-gateway-crud-rest-api/dev/1731423410054-2024-11-12T14:56:50.054Z/aws-api-gateway-crud-rest-api.zip"
               },
               "Handler": "src/handlers/delete.handler",
               "Runtime": "nodejs18.x",
@@ -270,44 +270,44 @@
               "DeleteLogGroup"
             ]
           },
-          "CreateLambdaVersionf1F6TegWi292sjuVO41c3QoXJkcUsfHxwzrE4FH2NQ": {
+          "CreateLambdaVersion5kDAZgWGGJfpxCpZfviOWuOAHSaeDZsVvEQGlPcf6ZA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateLambdaFunction"
               },
-              "CodeSha256": "H8Eh839UTaGsXC1sq3jrDWA5YlKc15qqyPCfNJriV5M="
+              "CodeSha256": "OMfyn6TJB67H5suN2/jIZl9lPZeHB/j2q9VRj19uAyk="
             }
           },
-          "ReadLambdaVersiontvDmX8txRvA0d4W8t2y0AGRgatI9tZLjGrlYJZXE": {
+          "ReadLambdaVersionvHeKz5m3dNhoa2eEqGiTbkxuEyOxshijkPgnZJviY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ReadLambdaFunction"
               },
-              "CodeSha256": "H8Eh839UTaGsXC1sq3jrDWA5YlKc15qqyPCfNJriV5M="
+              "CodeSha256": "OMfyn6TJB67H5suN2/jIZl9lPZeHB/j2q9VRj19uAyk="
             }
           },
-          "UpdateLambdaVersionTcYwq2yLFlgW8pljmtdKZySYtzn0qtjSiahVp6rpIqE": {
+          "UpdateLambdaVersionluJAXso3A7gjPhlfbDWRURnIesgR6MZXK6imaxkWY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateLambdaFunction"
               },
-              "CodeSha256": "H8Eh839UTaGsXC1sq3jrDWA5YlKc15qqyPCfNJriV5M="
+              "CodeSha256": "OMfyn6TJB67H5suN2/jIZl9lPZeHB/j2q9VRj19uAyk="
             }
           },
-          "DeleteLambdaVersion5cQEw4BxxvaKWcjQNTkE80ROHD3E8bJZxazemOdxU": {
+          "DeleteLambdaVersionNVj2oVZNNK1Tjkcb22csVn2QLF04l6tnYPH3UHmsJ4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteLambdaFunction"
               },
-              "CodeSha256": "H8Eh839UTaGsXC1sq3jrDWA5YlKc15qqyPCfNJriV5M="
+              "CodeSha256": "OMfyn6TJB67H5suN2/jIZl9lPZeHB/j2q9VRj19uAyk="
             }
           },
           "ApiGatewayRestApi": {
@@ -533,7 +533,7 @@
               "DeleteLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1731270343199": {
+          "ApiGatewayDeployment1731423398306": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -726,7 +726,7 @@
           "CreateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateLambdaVersionf1F6TegWi292sjuVO41c3QoXJkcUsfHxwzrE4FH2NQ"
+              "Ref": "CreateLambdaVersion5kDAZgWGGJfpxCpZfviOWuOAHSaeDZsVvEQGlPcf6ZA"
             },
             "Export": {
               "Name": "sls-aws-api-gateway-crud-rest-api-dev-CreateLambdaFunctionQualifiedArn"
@@ -735,7 +735,7 @@
           "ReadLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ReadLambdaVersiontvDmX8txRvA0d4W8t2y0AGRgatI9tZLjGrlYJZXE"
+              "Ref": "ReadLambdaVersionvHeKz5m3dNhoa2eEqGiTbkxuEyOxshijkPgnZJviY"
             },
             "Export": {
               "Name": "sls-aws-api-gateway-crud-rest-api-dev-ReadLambdaFunctionQualifiedArn"
@@ -744,7 +744,7 @@
           "UpdateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateLambdaVersionTcYwq2yLFlgW8pljmtdKZySYtzn0qtjSiahVp6rpIqE"
+              "Ref": "UpdateLambdaVersionluJAXso3A7gjPhlfbDWRURnIesgR6MZXK6imaxkWY"
             },
             "Export": {
               "Name": "sls-aws-api-gateway-crud-rest-api-dev-UpdateLambdaFunctionQualifiedArn"
@@ -753,7 +753,7 @@
           "DeleteLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteLambdaVersion5cQEw4BxxvaKWcjQNTkE80ROHD3E8bJZxazemOdxU"
+              "Ref": "DeleteLambdaVersionNVj2oVZNNK1Tjkcb22csVn2QLF04l6tnYPH3UHmsJ4"
             },
             "Export": {
               "Name": "sls-aws-api-gateway-crud-rest-api-dev-DeleteLambdaFunctionQualifiedArn"
@@ -826,7 +826,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "CreateLambdaVersionf1F6TegWi292sjuVO41c3QoXJkcUsfHxwzrE4FH2NQ"
+        "versionLogicalId": "CreateLambdaVersion5kDAZgWGGJfpxCpZfviOWuOAHSaeDZsVvEQGlPcf6ZA"
       },
       "read": {
         "handler": "src/handlers/read.handler",
@@ -850,7 +850,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "ReadLambdaVersiontvDmX8txRvA0d4W8t2y0AGRgatI9tZLjGrlYJZXE"
+        "versionLogicalId": "ReadLambdaVersionvHeKz5m3dNhoa2eEqGiTbkxuEyOxshijkPgnZJviY"
       },
       "update": {
         "handler": "src/handlers/update.handler",
@@ -874,7 +874,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "UpdateLambdaVersionTcYwq2yLFlgW8pljmtdKZySYtzn0qtjSiahVp6rpIqE"
+        "versionLogicalId": "UpdateLambdaVersionluJAXso3A7gjPhlfbDWRURnIesgR6MZXK6imaxkWY"
       },
       "delete": {
         "handler": "src/handlers/delete.handler",
@@ -898,7 +898,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "DeleteLambdaVersion5cQEw4BxxvaKWcjQNTkE80ROHD3E8bJZxazemOdxU"
+        "versionLogicalId": "DeleteLambdaVersionNVj2oVZNNK1Tjkcb22csVn2QLF04l6tnYPH3UHmsJ4"
       }
     },
     "resources": {
@@ -948,7 +948,7 @@
         "artifactsS3KeyDirname": "serverless/aws-api-gateway-crud-rest-api/dev/code-artifacts",
         "deploymentBucket": "amge-deployment-bucket",
         "artifact": "/media/Feidhmchláir/Tionscadail/AMGE/aws-api-gateway-crud-rest-api/.serverless/aws-api-gateway-crud-rest-api.zip",
-        "artifactDirectoryName": "serverless/aws-api-gateway-crud-rest-api/dev/1731270346601-2024-11-10T20:25:46.601Z"
+        "artifactDirectoryName": "serverless/aws-api-gateway-crud-rest-api/dev/1731423410054-2024-11-12T14:56:50.054Z"
       },
       "custom": {
         "$ref": "$[\"service\"][\"custom\"]"
@@ -962,7 +962,7 @@
     "artifact": "/media/Feidhmchláir/Tionscadail/AMGE/aws-api-gateway-crud-rest-api/.serverless/aws-api-gateway-crud-rest-api.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/aws-api-gateway-crud-rest-api/dev/1731270346601-2024-11-10T20:25:46.601Z",
+    "artifactDirectoryName": "serverless/aws-api-gateway-crud-rest-api/dev/1731423410054-2024-11-12T14:56:50.054Z",
     "artifact": "aws-api-gateway-crud-rest-api.zip"
   }
 }

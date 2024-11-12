@@ -7,6 +7,7 @@ const awsMock = require('aws-sdk-mock');
 const handler = require('./handler.js');
 const uuid = require('uuid');
 
+
 // Mock the DynamoDB DocumentClient
 awsMock.setSDKInstance(AWS);
 
@@ -34,22 +35,20 @@ describe('Lambda Functions', () => {
 
     awsMock.restore('DynamoDB.DocumentClient');
   });
-
   // Test for the GET (Read) Lambda function
   it('should retrieve an item from DynamoDB', async () => {
     const event = {
-      pathParameters: { id: 'sample-id' }
-
+      pathParameters: { id: '93a51f24-12b7-4e5b-869e-8ce7eebaa14f' }  // Replace with a real ID
     };
 
     // Mock the DynamoDB getItem
     awsMock.mock('DynamoDB.DocumentClient', 'get', (params, callback) => {
-      callback(null, { Item: { id: 'sample-id', name: 'Sample Item' } });
+      callback(null, { Item: { id: '93a51f24-12b7-4e5b-869e-8ce7eebaa14f', name: 'Sample Item' } });
     });
 
     const result = await handler.getItem(event);  // Call the Lambda handler
     expect(result.statusCode).toBe(200);
-    expect(JSON.parse(result.body).id).toBe('sample-id');
+    expect(JSON.parse(result.body).id).toBe('93a51f24-12b7-4e5b-869e-8ce7eebaa14f');
 
     awsMock.restore('DynamoDB.DocumentClient');
   });
