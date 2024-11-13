@@ -1,0 +1,26 @@
+
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo "Installing dependencies"
+      - npm install
+  pre_build:
+    commands:
+      - echo "Running pre-build tasks"
+      - npm run lint
+  build:
+    commands:
+      - echo "Building the application"
+      - npm run build
+  post_build:
+    commands:
+      - echo "Running post-build tasks"
+      - npm test
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
