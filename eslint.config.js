@@ -1,23 +1,21 @@
 /** @type {import('eslint').FlatConfig} */
 module.exports = [
   {
-    files: ["**/*.js"],
+    files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 12,
-      sourceType: "module",
+      sourceType: 'module',
       globals: {
         browser: true,
         es2021: true,
       },
     },
-    plugins: {
-      eslint: require("eslint-plugin-eslint"),
-    },
+    plugins: {},
     rules: {
-      "indent": ["error", 2],
-      "linebreak-style": ["error", "unix"],
-      "quotes": ["error", "single"],
-      "semi": ["error", "always"],
+      'indent': ['error', 2],
+      'linebreak-style': ['error', 'unix'],
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'always'],
     },
   },
 ];
