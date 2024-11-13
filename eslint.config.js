@@ -6,12 +6,13 @@ module.exports = [
       ecmaVersion: 12,
       sourceType: "module",
       globals: {
-        // Add global variables here if needed
         browser: true,
         es2021: true,
       },
     },
-    plugins: [],
+    plugins: {
+      eslint: require("eslint-plugin-eslint"),
+    },
     rules: {
       "indent": ["error", 2],
       "linebreak-style": ["error", "unix"],
@@ -20,3 +21,4 @@ module.exports = [
     },
   },
 ];
+
