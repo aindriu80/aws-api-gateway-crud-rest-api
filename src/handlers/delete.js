@@ -17,7 +17,7 @@ exports.handler = async (event) => {
     if (!result.Item) {
       return {
         statusCode: 404,
-        body: JSON.stringify({ message: "Item not found" })
+        body: JSON.stringify({ message: 'Item not found' })
       };
     }
 
@@ -31,13 +31,13 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Item deleted" })
+      body: JSON.stringify({ message: 'Item deleted' })
     };
   } catch (error) {
     console.error(error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: "Could not delete item", error })
+      body: JSON.stringify({ message: 'Could not delete item', error })
     };
   }
 };
