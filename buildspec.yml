@@ -15,12 +15,14 @@ phases:
   build:
     commands:
       - echo "Building the application"
-      - npm run build
+      - sam build
+      - echo "Packaging CloudFormation template"
+      - sam package --output-template-file packaged-template.yaml --s3-bucket lambda-deployment-bucket-amge-serverless      
   post_build:
     commands:
       - echo "Running post-build tasks"
       - npm test
 artifacts:
   files:
-    - '**/*'
+    - packaged-template.yaml
   discard-paths: yes
