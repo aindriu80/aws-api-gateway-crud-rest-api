@@ -20,8 +20,8 @@ phases:
       - sam package --output-template-file packaged-template.yaml --s3-bucket lambda-deployment-bucket-amge-serverless      
   post_build:
     commands:
-      - echo "Running post-build tasks"
-      - npm test
+      - echo "Deploying application"
+      - sam deploy --template-file packaged-template.yaml --stack-name my-lambda-stack --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND
 artifacts:
   files:
     - packaged-template.yaml
