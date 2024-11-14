@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: SAM template for CRUD Lambda functions with DynamoDB
+
+Resources:
+  CreateItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/create.handler      
+      Runtime: nodejs18.x
+      CodeUri: src                             
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ItemsTable
+      Events:
+        ApiCreateEvent:
+          Type: Api
+          Properties:
+            Path: /item
+            Method: post
+
+  ReadItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/read.handler      
+      Runtime: nodejs18.x
+      CodeUri: src
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ItemsTable
+      Events:
+        ApiReadEvent:
+          Type: Api
+          Properties:
+            Path: /item/{id}
+            Method: get
+
+  UpdateItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/update.handler   
+      Runtime: nodejs18.x
+      CodeUri: src
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ItemsTable
+      Events:
+        ApiUpdateEvent:
+          Type: Api
+          Properties:
+            Path: /item/{id}
+            Method: put
+
+  DeleteItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/delete.handler  
+      Runtime: nodejs18.x
+      CodeUri: src
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ItemsTable
+      Events:
+        ApiDeleteEvent:
+          Type: Api
+          Properties:
+            Path: /item/{id}
+            Method: delete
+
+  ItemsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ItemsTable
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+
