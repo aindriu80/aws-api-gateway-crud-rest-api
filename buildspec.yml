@@ -20,10 +20,7 @@ phases:
   post_build:
     commands:
       - echo "Deploying application"
-      - sam deploy --template-file packaged-template.yaml \
-        --stack-name my-lambda-stack \
-        --capabilities CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM \
-        --debug
+      - sam deploy --template-file packaged-template.yaml --stack-name my-lambda-stack --capabilities CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM --debug
 
 artifacts:
   files:
