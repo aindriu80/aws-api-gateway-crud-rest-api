@@ -1,4 +1,3 @@
-
 version: 0.2
 
 phases:
@@ -17,11 +16,12 @@ phases:
       - echo "Building the application"
       - sam build
       - echo "Packaging CloudFormation template"
-      - sam package --output-template-file packaged-template.yaml --s3-bucket lambda-deployment-bucket-amge-serverless      
+      - sam package --output-template-file packaged-template.yaml --s3-bucket lambda-deployment-bucket-amge-serverless
   post_build:
     commands:
       - echo "Deploying application"
-      - sam deploy --template-file packaged-template.yaml --stack-name my-lambda-stack --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND
+      - sam deploy --template-file packaged-template.yaml --stack-name my-lambda-stack --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND CAPABILITY_IAM
+
 artifacts:
   files:
     - packaged-template.yaml
