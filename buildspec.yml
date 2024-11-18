@@ -20,7 +20,14 @@ phases:
   post_build:
     commands:
       - echo "Deploying application"
-      - sam deploy --template-file packaged-template.yaml --stack-name my-lambda-stack --capabilities CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM --debug
+      - sam deploy --template-file packaged-template.yaml \
+        --stack-name my-lambda-stack \
+        --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND CAPABILITY_IAM \
+        --region eu-west-1 \
+        --s3-bucket lambda-deployment-bucket-amge-serverless \
+        --confirm-changeset \
+        --no-fail-on-empty-changeset \
+        --debug
 
 artifacts:
   files:
